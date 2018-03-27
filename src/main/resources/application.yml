@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    mode: LEGACYHTML5
+
+security:
+  #配置放行的目录和方法
+  ignored: /api/*,/css/*,/js/*,/images/*,/fonts/*,/font-awesome/*
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
