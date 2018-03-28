@@ -67,7 +67,7 @@ public class JdbcUtil {
                 columnModel.setDataType(columnSet.getString("DATA_TYPE"));
                 columnModel.setRemarks(columnSet.getString("REMARKS"));
                 columnModel.setTypeName(columnSet.getString("TYPE_NAME"));
-                columnModel.setAutoIncrement(columnSet.getBoolean("IS_AUTOINCREMENT"));
+                columnModel.setAutoIncrement(columnSet.getString("IS_AUTOINCREMENT").equalsIgnoreCase("yes"));
                 columnModel.setPrimaryKey(justicPrimaryKey(columnModel.getColumnName(), primaryKeys));
                 //String columnClassName = ColumnTypeEnum.getColumnTypeEnumByDBType(columnModel.getTypeName());
                 String columnClassName = sqlType2JavaType(columnModel.getTypeName());

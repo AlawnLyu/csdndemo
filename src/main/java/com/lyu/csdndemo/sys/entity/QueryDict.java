@@ -1,27 +1,19 @@
 package com.lyu.csdndemo.sys.entity;
 
+import com.lyu.csdndemo.common.base.entity.QueryBase;
+
 /**
  *@author lyu
  **/
-public class Dict {
- //主键
- private int id;
- //代码
+public class QueryDict extends QueryBase {
+ //代码 
  private String code;
- //描述
+ //描述 
  private String text;
- //类型
+ //类型 
  private String type;
- //值
+ //值 
  private String value;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getCode() {
 		return code;

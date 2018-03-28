@@ -372,44 +372,43 @@ public class GenCodeUtil {
         FileOutputStream fos = new FileOutputStream(fEntity);
         fos.write(genJavaBeanFromTableStructure(author, table, beanName, basePackage + ".entity").getBytes());
         fos.close();
-//        //生成查询实体类文件
-//        if (StringUtils.isNotEmpty(queryModelName)) {
-//            File fQEntity = new File(entityPath + "/" + queryModelName + ".java");
-//            if (fQEntity.exists()) {
-//                fQEntity.delete();
-//            }
-//            fos = new FileOutputStream(fQEntity);
-//            fos.write(genQueryModelFromTableStructure(author, table, queryModelName, extendsBasePackage, basePackage
-//                    + ".entity").getBytes());
-//            fos.close();
-//        }
-//        //生成mybatis配置文件
-//        String mybatisPath = createFloder("/src/main" + mybatisBasePath);
-//        fos = new FileOutputStream(mybatisPath + "/mybatis_" + toFirstCharLowerCase(beanName) + ".xml");
-//        fos.write(MyBatisUtil.genMapperConfig(table, basePackage + ".dao." + beanName + "Dao", basePackage + "
-// .entity" +
-//                "." + beanName, basePackage + ".entity." + queryModelName).getBytes());
-//        fos.close();
-//        //生成Dao
-//        String daoPath = createFloder("src/main/java", packagePath + "/dao");
-//        File fDao = new File(daoPath + "/" + beanName + "Dao.java");
-//        fos = new FileOutputStream(fDao);
-//        fos.write(genDao(author, basePackage + ".dao", beanName, queryModelName, extendsBasePackage).getBytes());
-//        fos.close();
-//        //生成Service
-//        String servicePath = createFloder("src/main/java", packagePath + "/service");
-//        File fService = new File(servicePath + "/" + beanName + "Service.java");
-//        fos = new FileOutputStream(fService);
-//        fos.write(genService(author, basePackage + ".service", beanName, queryModelName, extendsBasePackage).getBytes
-//                ());
-//        fos.close();
-//        // 生成controller
-//        String controllerPath = createFloder("src/main/java", packagePath + "/controller");
-//        File fController = new File(controllerPath + "/" + beanName + "Controller.java");
-//        fos = new FileOutputStream(fController);
-//        fos.write(genController(author, basePackage + ".controller", beanName, queryModelName, extendsBasePackage)
-//                .getBytes());
-//        fos.close();
+        //生成查询实体类文件
+        if (StringUtils.isNotEmpty(queryModelName)) {
+            File fQEntity = new File(entityPath + "/" + queryModelName + ".java");
+            if (fQEntity.exists()) {
+                fQEntity.delete();
+            }
+            fos = new FileOutputStream(fQEntity);
+            fos.write(genQueryModelFromTableStructure(author, table, queryModelName, extendsBasePackage, basePackage
+                    + ".entity").getBytes());
+            fos.close();
+        }
+        //生成mybatis配置文件
+        String mybatisPath = createFloder("/src/main" + mybatisBasePath);
+        fos = new FileOutputStream(mybatisPath + "/mybatis_" + toFirstCharLowerCase(beanName) + ".xml");
+        fos.write(MyBatisUtil.genMapperConfig(table, basePackage + ".dao." + beanName + "Dao", basePackage + ".entity" +
+                "." + beanName, basePackage + ".entity." + queryModelName).getBytes());
+        fos.close();
+        //生成Dao
+        String daoPath = createFloder("src/main/java", packagePath + "/dao");
+        File fDao = new File(daoPath + "/" + beanName + "Dao.java");
+        fos = new FileOutputStream(fDao);
+        fos.write(genDao(author, basePackage + ".dao", beanName, queryModelName, extendsBasePackage).getBytes());
+        fos.close();
+        //生成Service
+        String servicePath = createFloder("src/main/java", packagePath + "/service");
+        File fService = new File(servicePath + "/" + beanName + "Service.java");
+        fos = new FileOutputStream(fService);
+        fos.write(genService(author, basePackage + ".service", beanName, queryModelName, extendsBasePackage).getBytes
+                ());
+        fos.close();
+        // 生成controller
+        String controllerPath = createFloder("src/main/java", packagePath + "/controller");
+        File fController = new File(controllerPath + "/" + beanName + "Controller.java");
+        fos = new FileOutputStream(fController);
+        fos.write(genController(author, basePackage + ".controller", beanName, queryModelName, extendsBasePackage)
+                .getBytes());
+        fos.close();
     }
 
     /**
