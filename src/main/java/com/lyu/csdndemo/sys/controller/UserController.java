@@ -22,15 +22,6 @@ public class UserController extends GenericController<User, QueryUser> {
     @Inject
     private UserService userService;
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public Map<String, Object> addUser(User user) {
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("success", true);
-        result.put("msg", "增加数据成功！");
-        return result;
-    }
-
     @Override
     protected GenericService<User, QueryUser> getService() {
         return userService;

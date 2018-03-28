@@ -3,6 +3,7 @@
 <head>
     <meta content="text/html;charset=UTF-8"/>
     <title>登录页面</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
     <style type="text/css">
         body {
             padding-top: 50px;
@@ -20,9 +21,9 @@
     <div class="starter-template">
         <p th:if="${param.logout}" class="bg-warninig">已成功注销</p><!-- 1 -->
         <p th:if="${param.error}"
-           th:text="${session.SPRING_SECURITY_LAST_EXCEPTION.message=='Bad credentials'?'账号/密码错误！':${session.SPRING_SECURITY_LAST_EXCEPTION.message}}"
+           th:text="${SPRING_SECURITY_LAST_EXCEPTION.message=='Bad credentials'?'账号/密码错误！':${SPRING_SECURITY_LAST_EXCEPTION.message}}"
            class="bg-danger"></p><!-- 2 -->
-        <h2>使用账号密码登录</h2>
+        <h2>用户登录</h2>
         <form name="form" th:action="@{/login}" action="/login" method="POST"><!-- 3 -->
             <div class="form-group">
                 <label for="username">账号</label>
