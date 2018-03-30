@@ -1,5 +1,8 @@
 package com.lyu.csdndemo.sys.entity;
 
+/**
+ * @author lyu
+ **/
 public class UserAssociateRole {
     private int userId;
     private long roleId;
@@ -28,4 +31,5 @@ public class UserAssociateRole {
     public void setRoleId(long roleId) {
         this.roleId = roleId;
     }
+
 }

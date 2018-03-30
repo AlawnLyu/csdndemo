@@ -8,12 +8,12 @@ import java.util.List;
 @SuppressWarnings("rawtypes")
 public class Page {
     private List rows;
-    private Long total;
+    private long total;
 
     public Page() {
     }
 
-    public Page(List rows, Long total) {
+    public Page(List rows, long total) {
         super();
         this.rows = rows;
         this.total = total;
@@ -27,11 +27,11 @@ public class Page {
         this.rows = rows;
     }
 
-    public Long getTotal() {
+    public long getTotal() {
         return total;
     }
 
-    public void setTotal(Long total) {
+    public void setTotal(long total) {
         this.total = total;
     }
 

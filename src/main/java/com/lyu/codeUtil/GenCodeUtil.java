@@ -416,12 +416,7 @@ public class GenCodeUtil {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-//        String basePackage = "com.lyu.csdndemo.sys";
-//        String properitesUri = "application-generic.properties";
-//        String packagePath = basePackage.replaceAll("\\.", "/");
-//        JdbcUtil.setPropertiesURL(properitesUri);
-//        TableModel table = JdbcUtil.getTableStructure("dict");
-        genFiles("lyu", "csdndemo", "dict", "com.lyu.csdndemo.common.base", "com.lyu.csdndemo.sys",
-                "/resources/mybatis/mapper", "Dict", "QueryDict", "application-generic.properties");
+        genFiles("lyu", "csdndemo", "role_associate_tree", "com.lyu.csdndemo.common.base", "com.lyu.csdndemo.sys",
+                "/resources/mybatis/mapper", "RoleAssociateTree", "QueryRoleAssociateTree", "application-generic.properties");
     }
 }

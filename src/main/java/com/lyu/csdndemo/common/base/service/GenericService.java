@@ -83,7 +83,7 @@ public abstract class GenericService<T, Q extends QueryBase> {
     public Page findByPage(Q queryModel) {
         List<T> list = getDao().findByPage(queryModel);
         int count = getDao().count(queryModel);
-        return new Page(list, (long) count);
+        return new Page(list, count);
     }
 
     /**

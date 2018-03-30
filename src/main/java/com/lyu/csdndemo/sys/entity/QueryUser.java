@@ -17,6 +17,7 @@ public class QueryUser extends QueryBase {
     private String state;
     private String type;
     private String lastLoginDate;
+    private OrgGroup orgGroup;
 
     public String getLogin() {
         return login;
@@ -128,5 +129,13 @@ public class QueryUser extends QueryBase {
 
     public void setLastLoginDate(String lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
+    }
+
+    public OrgGroup getOrgGroup() {
+        return orgGroup;
+    }
+
+    public void setOrgGroup(OrgGroup orgGroup) {
+        this.orgGroup = orgGroup;
     }
 }

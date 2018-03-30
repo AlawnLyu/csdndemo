@@ -38,6 +38,8 @@ public class User implements UserDetails {
     private List<UserRole> roles;
     // 权限集合数据
     private String roleArray;
+    // 所在分组的集合
+    private OrgGroup orgGroup;
 
     /**
      * 功能描述：组装角色数据集合
@@ -73,14 +75,13 @@ public class User implements UserDetails {
         return auths;
     }
 
-    @Override
     public String getPassword() {
-        return this.getPassword();
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return this.getUserName();
+        return this.getLogin();
     }
 
     @Override
@@ -233,5 +234,13 @@ public class User implements UserDetails {
 
     public void setRoleArray(String roleArray) {
         this.roleArray = roleArray;
+    }
+
+    public OrgGroup getOrgGroup() {
+        return orgGroup;
+    }
+
+    public void setOrgGroup(OrgGroup orgGroup) {
+        this.orgGroup = orgGroup;
     }
 }

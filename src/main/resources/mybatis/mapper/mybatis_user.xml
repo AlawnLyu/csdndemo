@@ -18,6 +18,15 @@
         <result property="state" column="state"/>
         <result property="type" column="type"/>
         <result property="lastLoginDate" column="last_login_date"/>
+        <association property="orgGroup" javaType="com.lyu.csdndemo.sys.entity.OrgGroup" column="group_id">
+            <id property="groupId" column="group_id"/>
+            <result property="existingNum" column="existing_num"/>
+            <result property="groupCode" column="group_code"/>
+            <result property="name" column="name"/>
+            <result property="node" column="node"/>
+            <result property="num" column="num"/>
+            <result property="parentNode" column="parent_node"/>
+        </association>
     </resultMap>
     <!-- 包含角色信息的map -->
     <resultMap id="UserLoginMap" type="com.lyu.csdndemo.sys.entity.User">
@@ -39,9 +48,14 @@
         <collection property="roles" ofType="com.lyu.csdndemo.sys.entity.UserRole" javaType="java.util.ArrayList">
             <result property="id" column="user_role_id" jdbcType="VARCHAR"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="rolename" column="role_name" jdbcType="VARCHAR"/>
+            <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
         </collection>
     </resultMap>
+
+    <!-- 更新用户状态为可用或者不可用 -->
+    <update id="userControl" parameterType="com.csdn.demo.sys.entity.User">
+        update user set state = #{state} where id=#{id}
+    </update>
 
     <!-- 根据账号来获取用户信息 -->
     <select id="findByLogin" parameterType="java.lang.String" resultMap="UserLoginMap">
@@ -50,6 +64,11 @@
         inner join user_role ur on uar.role_id = ur.id
         where u.login = #{login}
     </select>
+
+    <!-- 更新用户的最迟登陆时间 -->
+    <update id="updateLogin" parameterType="com.csdn.demo.sys.entity.User">
+        update user set last_login_date = #{lastLoginDate} where id=#{id}
+    </update>
 
     <!--根据主键获取对象-->
     <select id="get" parameterType="com.lyu.csdndemo.sys.entity.User" resultMap="UserMap">
