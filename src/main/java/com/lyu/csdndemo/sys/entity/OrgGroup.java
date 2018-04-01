@@ -1,71 +1,79 @@
 package com.lyu.csdndemo.sys.entity;
 
 /**
- *@author lyu
+ * @author lyu
  **/
 public class OrgGroup {
- private long groupId;
- private long existingNum;
- private String groupCode;
- private String name;
- private String node;
- private long num;
- private String parentNode;
+    private long groupId;
+    private long existingNum;
+    private String groupCode;
+    private String name;
+    private String node;
+    private long num;
+    private String parentNode;
+    private OrgGroup orgGroup;
 
-	public long getGroupId() {
-		return groupId;
-	}
+    public long getGroupId() {
+        return groupId;
+    }
 
-	public void setGroupId(long groupId) {
-		this.groupId = groupId;
-	}
+    public void setGroupId(long groupId) {
+        this.groupId = groupId;
+    }
 
-	public long getExistingNum() {
-		return existingNum;
-	}
+    public long getExistingNum() {
+        return existingNum;
+    }
 
-	public void setExistingNum(long existingNum) {
-		this.existingNum = existingNum;
-	}
+    public void setExistingNum(long existingNum) {
+        this.existingNum = existingNum;
+    }
 
-	public String getGroupCode() {
-		return groupCode;
-	}
+    public String getGroupCode() {
+        return groupCode;
+    }
 
-	public void setGroupCode(String groupCode) {
-		this.groupCode = groupCode;
-	}
+    public void setGroupCode(String groupCode) {
+        this.groupCode = groupCode;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getNode() {
-		return node;
-	}
+    public String getNode() {
+        return node;
+    }
 
-	public void setNode(String node) {
-		this.node = node;
-	}
+    public void setNode(String node) {
+        this.node = node;
+    }
 
-	public long getNum() {
-		return num;
-	}
+    public long getNum() {
+        return num;
+    }
 
-	public void setNum(long num) {
-		this.num = num;
-	}
+    public void setNum(long num) {
+        this.num = num;
+    }
 
-	public String getParentNode() {
-		return parentNode;
-	}
+    public String getParentNode() {
+        return parentNode;
+    }
 
-	public void setParentNode(String parentNode) {
-		this.parentNode = parentNode;
-	}
+    public void setParentNode(String parentNode) {
+        this.parentNode = parentNode;
+    }
 
+    public OrgGroup getOrgGroup() {
+        return orgGroup;
+    }
+
+    public void setOrgGroup(OrgGroup orgGroup) {
+        this.orgGroup = orgGroup;
+    }
 }

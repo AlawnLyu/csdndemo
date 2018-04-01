@@ -1,5 +1,8 @@
 package com.lyu.csdndemo.sys.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author lyu
  **/
@@ -12,6 +15,12 @@ public class Tree implements Comparable<Tree> {
     private long treeOrder;
     private String url;
     private String state;
+    // 菜单节点是否选中的状态
+    private boolean checked;
+    // 父菜单信息
+    private Tree tree;
+    // 子菜单节点信息
+    private List<Tree> child = new ArrayList<Tree>();
 
     public Tree() {
         super();
@@ -83,6 +92,38 @@ public class Tree implements Comparable<Tree> {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public long getpId() {
+        return pId;
+    }
+
+    public void setpId(long pId) {
+        this.pId = pId;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
+    public Tree getTree() {
+        return tree;
+    }
+
+    public void setTree(Tree tree) {
+        this.tree = tree;
+    }
+
+    public List<Tree> getChild() {
+        return child;
+    }
+
+    public void setChild(List<Tree> child) {
+        this.child = child;
     }
 
     /**

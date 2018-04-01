@@ -18,7 +18,7 @@
     </resultMap>
 
     <!--根据角色id获取权限菜单-->
-    <select id="getUserRoleAssociate" parameterType="com.csdn.demo.sys.entity.UserRole" resultMap="UserRoleTreeMap">
+    <select id="getUserRoleAssociate" parameterType="com.lyu.csdndemo.sys.entity.UserRole" resultMap="UserRoleTreeMap">
 		SELECT ur.*,t.id as tree_id,t.code,t.icon,t.name as tree_name,t.p_id,t.tree_order,t.url,t.state FROM user_role ur inner join role_associate_tree rat on ur.id = rat.role_id inner join tree t on rat.tree_id = t.id
 		WHERE ur.id=#{id}
 	</select>

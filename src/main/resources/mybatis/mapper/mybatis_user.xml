@@ -53,7 +53,7 @@
     </resultMap>
 
     <!-- 更新用户状态为可用或者不可用 -->
-    <update id="userControl" parameterType="com.csdn.demo.sys.entity.User">
+    <update id="userControl" parameterType="com.lyu.csdndemo.sys.entity.User">
         update user set state = #{state} where id=#{id}
     </update>
 
@@ -66,7 +66,7 @@
     </select>
 
     <!-- 更新用户的最迟登陆时间 -->
-    <update id="updateLogin" parameterType="com.csdn.demo.sys.entity.User">
+    <update id="updateLogin" parameterType="com.lyu.csdndemo.sys.entity.User">
         update user set last_login_date = #{lastLoginDate} where id=#{id}
     </update>
 
