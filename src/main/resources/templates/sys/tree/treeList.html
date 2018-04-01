@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:inline="include/includebase"></head>
+<body>
+<div id="content" class="row-fluid">
+    <div class="col-md-3" style="margin-top: 10px;">
+        <ul id="menu_tree" class="ztree" style="width: 560px;overflow: auto;"></ul>
+    </div>
+</div>
+<script th:inline="javascript">
+    var zTree;
+    var demoIframe;
+    var selectNode;
+
+    function addHoverDom(treeId, treeNode) {
+        var sObj = $("#" + treeNode.tId + "_span");
+
+    }
+</script>
+</body>
+</html>
