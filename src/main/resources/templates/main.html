@@ -3,37 +3,6 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:include="include/includebase"></head>
 <link th:href="@{css/sb-admin.css}" rel="stylesheet"/>
-<script th:inline="javascript">
-    $(function () {
-        // 页面加载完成以后开启websocket的连接
-        var options = new Array();
-        options.sockurl = '/ricky-websocket';
-        options.stompClienturl = '/ricky/topic/greetings';
-        options.login = [[${#authentication.name}]];
-        options.success = function(greeting){
-            var r = eval("("+JSON.parse(greeting.body).content+")")
-            alert(r);
-            // $("#greetings").append("<tr><td>" + JSON.parse(greeting.body).content + "</td></tr>");
-        }
-        $.fn.socketConnect(options);
-        // 初始化nav
-        $.fn.bootstrapNav({index:'main',navTitle:'XXXX管理系统'});
-        // 初始化标签页
-        $("#tabContainer").tabs({
-            data: [{
-                id: '99999999',
-                text: '首页',
-                url: "home",
-                closeable: false
-            }],
-            showIndex: 0,
-            loadAll: false
-        })
-        //
-        $.fn.bootstrapTree({url:"/user/mainTree",treeId:'menu_tree',tabId:"tabContainer"});
-        $.fn.dictUtil("/dict/loadDict");
-    });
-</script>
 <body>
 <div id="wrapper">
     <!-- Navigation -->
@@ -149,5 +118,36 @@
     </div>
 </div>
 -->
+<script th:inline="javascript">
+    $(function () {
+        // 页面加载完成以后开启websocket的连接
+        // var options = new Array();
+        // options.sockurl = '/ricky-websocket';
+        // options.stompClienturl = '/ricky/topic/greetings';
+        // options.login = [[${#authentication.name}]];
+        // options.success = function(greeting){
+        //     var r = eval("("+JSON.parse(greeting.body).content+")")
+        //     alert(r);
+        //     // $("#greetings").append("<tr><td>" + JSON.parse(greeting.body).content + "</td></tr>");
+        // }
+        // $.fn.socketConnect(options);
+        // 初始化nav
+        $.fn.bootstrapNav({index:'main',navTitle:'XXXX管理系统'});
+        // 初始化标签页
+        $("#tabContainer").tabs({
+            data: [{
+                id: '99999999',
+                text: '首页',
+                url: "/home",
+                closeable: false
+            }],
+            showIndex: 0,
+            loadAll: false
+        })
+        //
+        $.fn.bootstrapTree({url:"/user/mainTree",treeId:'menu_tree',tabId:"tabContainer"});
+        $.fn.dictUtil("/dict/loadDict");
+    });
+</script>
 </body>
 </html>

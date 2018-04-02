@@ -62,14 +62,6 @@ public class Tree implements Comparable<Tree> {
         this.name = name;
     }
 
-    public long getPId() {
-        return pId;
-    }
-
-    public void setPId(long pId) {
-        this.pId = pId;
-    }
-
     public long getTreeOrder() {
         return treeOrder;
     }

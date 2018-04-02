@@ -45,7 +45,7 @@ public class NodeUtil {
     private static void recursionFn(List<Tree> list, Tree node) {
         List<Tree> childList = getChildList(list, node);
         if (hasChild(list, node)) {
-            Iterator<Tree> it = list.iterator();
+            Iterator<Tree> it = childList.iterator();
             while (it.hasNext()) {
                 Tree n = it.next();
                 if (hasChild(list, n)) {
@@ -69,7 +69,7 @@ public class NodeUtil {
         Iterator<Tree> it = list.iterator();
         while (it.hasNext()) {
             Tree n = it.next();
-            if (n.getId() == node.getId()) {
+            if (n.getpId() == node.getId()) {
                 nodeList.add(n);
             }
         }
