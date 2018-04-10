@@ -42,11 +42,8 @@ public class WebsocketController {
         Map<String, Set<String>> all = socketSessionRegistry.getAllSessionIds();
         JSONObject jobj = new JSONObject();
         jobj.put("test", "test");
-        all.forEach((k, v) -> {
-            v.forEach(x -> {
-                template.convertAndSendToUser(x, "/topic/greetings", new OutMessage(jobj.toString()), createHeaders(x));
-            });
-        });
+        //all.forEach((k, v) -> v.forEach(x -> template.convertAndSendToUser(x, "/topic/greetings", new OutMessage(jobj.toString()), createHeaders(x))));
+        all.forEach((k, v) -> template.convertAndSendToUser(k, "/topic/greetings", new OutMessage(jobj.toString())));
     }
 
     /**
