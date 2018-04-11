@@ -30,13 +30,13 @@
 
     <!--保存-->
     <insert id="save" parameterType="com.lyu.csdndemo.sys.entity.Tree" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO tree(code,icon,name,p_id,tree_order,url,state)
-		VALUES(#{code},#{icon},#{name},#{pId},#{treeOrder},#{url},#{state})
+		INSERT INTO tree(code,icon,name,p_id,tree_order,url,state,display)
+		VALUES(#{code},#{icon},#{name},#{pId},#{treeOrder},#{url},#{state},#{display})
 	</insert>
 
     <!--修改-->
     <update id="update" parameterType="com.lyu.csdndemo.sys.entity.Tree">
-		UPDATE tree SET code=#{code},icon=#{icon},name=#{name},p_id=#{pId},tree_order=#{treeOrder},url=#{url},state=#{state}
+		UPDATE tree SET code=#{code},icon=#{icon},name=#{name},p_id=#{pId},tree_order=#{treeOrder},url=#{url},state=#{state},display=#{display}
 		WHERE id=#{id}
 	</update>
 
@@ -70,6 +70,9 @@
         <if test="state!=null and state!='' ">
             AND state=#{state}
         </if>
+        <if test="display!=null and display!='' ">
+            AND display=#{display}
+        </if>
         <if test="sort!= null">
             order by ${sort} ${order}
         </if>
@@ -101,6 +104,9 @@
         <if test="state!=null and state!='' ">
             AND state=#{state}
         </if>
+        <if test="display!=null and display!='' ">
+            AND display=#{display}
+        </if>
     </select>
 
     <!--查询-->
@@ -127,6 +133,9 @@
         </if>
         <if test="state!=null and state!='' ">
             AND state=#{state}
+        </if>
+        <if test="display!=null and display!='' ">
+            AND display=#{display}
         </if>
         <if test="sort!= null">
             order by ${sort} ${order}
