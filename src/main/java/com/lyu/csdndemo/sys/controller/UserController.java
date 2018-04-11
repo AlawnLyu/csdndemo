@@ -97,7 +97,7 @@ public class UserController extends GenericController<User, QueryUser> {
   public String updatePage(User entity, Model model) throws Exception {
     entity = getService().get(entity);
     entity.setRoleArray(
-        JsonHelper.list2json(
+        JsonHelper.writeObject(
             Optional.ofNullable(userService.findByLogin(entity.getLogin()))
                 .filter(u -> u != null)
                 .orElse(new User())

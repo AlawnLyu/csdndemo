@@ -1,14 +1,13 @@
 package com.lyu.csdndemo.common.config.websocket;
 
+import com.lyu.csdndemo.common.util.redis.RedisCache;
 import com.lyu.csdndemo.common.util.user.UserInfo;
 import com.lyu.csdndemo.sys.entity.User;
-import com.lyu.csdndemo.sys.service.UserService;
 import com.xiaoleilu.hutool.date.DateUtil;
 import com.xiaoleilu.hutool.date.DatePattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.Date;
 import java.util.Set;
@@ -19,7 +18,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 /** 用户session记录类 */
 public class SocketSessionRegistry {
 
-  @Autowired private UserService userService;
+  @Autowired private RedisCache redisCache;
 
   private final ConcurrentMap<String, Set<String>> userSessionIds = new ConcurrentHashMap();
   private final byte[] lock = new byte[0];
@@ -62,7 +61,7 @@ public class SocketSessionRegistry {
         this.userSessionIds.put(user, (Set<String>) set);
       }
       // 当最迟登陆的时间和当前时间的年月日不匹配的时候清空session缓存
-      User userLogin = UserInfo.getUser();
+      User userLogin = redisCache.getObject("userinfo-" + user, User.class);
       if (userLogin != null) {
         if (!DateUtil.format(userLogin.getLastLoginDate(), DatePattern.NORM_DATE_FORMAT)
             .equalsIgnoreCase(DateUtil.format(new Date(), DatePattern.NORM_DATE_FORMAT))) {
