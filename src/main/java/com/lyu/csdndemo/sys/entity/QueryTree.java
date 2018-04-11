@@ -2,72 +2,78 @@ package com.lyu.csdndemo.sys.entity;
 
 import com.lyu.csdndemo.common.base.entity.QueryBase;
 
-/**
- *@author lyu
- **/
+/** @author lyu */
 public class QueryTree extends QueryBase {
- private String code;
- private String icon;
- private String name;
- private Long pId;
- private Long treeOrder;
- private String url;
- private String state;
+  private String code;
+  private String icon;
+  private String name;
+  private Long pId;
+  private Long treeOrder;
+  private String url;
+  private String state;
+  private String display;
 
-	public String getCode() {
-		return code;
-	}
+  public String getCode() {
+    return code;
+  }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+  public void setCode(String code) {
+    this.code = code;
+  }
 
-	public String getIcon() {
-		return icon;
-	}
+  public String getIcon() {
+    return icon;
+  }
 
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
+  public void setIcon(String icon) {
+    this.icon = icon;
+  }
 
-	public String getName() {
-		return name;
-	}
+  public String getName() {
+    return name;
+  }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  public void setName(String name) {
+    this.name = name;
+  }
 
-	public Long getPId() {
-		return pId;
-	}
+  public Long getpId() {
+    return pId;
+  }
 
-	public void setPId(Long pId) {
-		this.pId = pId;
-	}
+  public void setpId(Long pId) {
+    this.pId = pId;
+  }
 
-	public Long getTreeOrder() {
-		return treeOrder;
-	}
+  public Long getTreeOrder() {
+    return treeOrder;
+  }
 
-	public void setTreeOrder(Long treeOrder) {
-		this.treeOrder = treeOrder;
-	}
+  public void setTreeOrder(Long treeOrder) {
+    this.treeOrder = treeOrder;
+  }
 
-	public String getUrl() {
-		return url;
-	}
+  public String getUrl() {
+    return url;
+  }
 
-	public void setUrl(String url) {
-		this.url = url;
-	}
+  public void setUrl(String url) {
+    this.url = url;
+  }
 
-	public String getState() {
-		return state;
-	}
+  public String getState() {
+    return state;
+  }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+  public void setState(String state) {
+    this.state = state;
+  }
 
+  public String getDisplay() {
+    return display;
+  }
+
+  public void setDisplay(String display) {
+    this.display = display;
+  }
 }

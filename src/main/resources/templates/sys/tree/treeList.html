@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:inline="include/includebase"></head>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:include="include/includebase"></head>
 <body>
 <div id="content" class="row-fluid">
-    <div class="col-md-3" style="margin-top: 10px;">
+    <div class="col-md-12" style="margin-top: 10px;">
         <ul id="menu_tree" class="ztree" style="width: 560px;overflow: auto;"></ul>
     </div>
 </div>
@@ -17,11 +18,11 @@
         var sObj = $("#" + treeNode.tId + "_span");
         if (treeNode.editNameFlag || $('#addBtn_' + treeNode.tId).length > 0)
             return;
-        var addStr = "<span class='button remove' id='removeBtn_" + treeNode.tId + "' title='add node' onfoucs='this.blur();'></span>";
-        addStr += "<span class='button add' id='addBtn_" + treeNode.tId + "'></span>";
-        addStr += "<span class='button edit' id='editBtn_" + treeNode.tId + "'></span>";
+        var addStr = "<span class='button remove' id='removeBtn_" + treeNode.tId + "' title='删除节点' onfoucs='this.blur();'></span>";
+        addStr += "<span class='button add' id='addBtn_" + treeNode.tId + "' title='新增节点'></span>";
+        addStr += "<span class='button edit' id='editBtn_" + treeNode.tId + "' title='编辑节点'></span>";
         if (treeNode.isParent) {
-            addStr += "<span class='button add' id='addParentBtn_" + treeNode.tId + "'></span>";
+            addStr += "<span class='button add' id='addParentBtn_" + treeNode.tId + "' title='新增父节点'></span>";
         }
         sObj.after(addStr);
         var btn = $("#addBtn_" + treeNode.tId);

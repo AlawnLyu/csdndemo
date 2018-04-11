@@ -1,18 +1,18 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 31数据库
-Source Server Version : 50716
-Source Host           : 10.6.71.236:3306
-Source Database       : hyll_springboot
+Source Server         : localhost
+Source Server Version : 50721
+Source Host           : localhost:3306
+Source Database       : csdndemo
 
 Target Server Type    : MYSQL
-Target Server Version : 50716
+Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2017-12-11 10:53:58
+Date: 2018-04-11 16:53:26
 */
-USE csdndemo;
+
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
@@ -27,7 +27,7 @@ CREATE TABLE `dict` (
   `value` varchar(255) DEFAULT NULL,
   `is_load` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of dict
@@ -113,26 +113,27 @@ CREATE TABLE `tree` (
   `tree_order` bigint(20) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `state` varchar(10) DEFAULT NULL,
+  `display` varchar(10) DEFAULT NULL COMMENT '节点是否显示(0,隐藏；1，显示)',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tree
 -- ----------------------------
-INSERT INTO `tree` VALUES ('1', '#', 'fa fa-fw fa-cogs', '系统管理', '0', '1', '#', '1');
-INSERT INTO `tree` VALUES ('2', null, 'fa fa-fw fa-tree', '菜单管理', '1', '1', 'treeList', '1');
-INSERT INTO `tree` VALUES ('7', 'groupManager', 'fa fa-fw fa-group', '组织架构', '1', '2', 'groupList', '1');
-INSERT INTO `tree` VALUES ('8', 'userRoleManager', 'fa fa-fw fa-user-secret', '角色管理', '1', '3', 'userRoleList', '1');
-INSERT INTO `tree` VALUES ('9', 'userManager', 'fa fa-fw fa-user', '用户维护', '1', '4', 'userList', '1');
-INSERT INTO `tree` VALUES ('10', 'dictManager', 'fa fa-fw fa-book', '字典维护', '1', '5', 'dictList', '0');
-INSERT INTO `tree` VALUES ('17', 'sysManager', 'fa fa-fw fa-desktop', '菜单维护', '0', '2', '#', '1');
-INSERT INTO `tree` VALUES ('23', 'foodTypeManager', 'fa fa-fw fa-tree', '菜品维护', '17', '1', 'foodTypeList', '1');
-INSERT INTO `tree` VALUES ('24', 'dinerListManager', 'fa fa-fw fa-book', '菜单管理', '17', '2', 'dinerList', '1');
-INSERT INTO `tree` VALUES ('25', 'orderManager', 'fa fa-fw fa-book', '订单管理', '17', '3', 'orderList', '1');
-INSERT INTO `tree` VALUES ('26', 'diningTableManager', 'fa fa-fw fa-tree', '餐桌维护', '17', '4', 'diningTableList', '1');
-INSERT INTO `tree` VALUES ('27', 'userManagerTop', 'fa fa-user', '用户维护', '0', '3', '#', '1');
-INSERT INTO `tree` VALUES ('28', 'mobileUserManager', 'fa fa-user-circle', '移动用户', '27', '1', 'mobileUser', '1');
-INSERT INTO `tree` VALUES ('29', 'scoreDetailManager', 'fa fa-user-circle', '积分明细', '27', '2', 'scoreDetailList', '1');
+INSERT INTO `tree` VALUES ('1', '#', 'fa fa-fw fa-cogs', '系统管理', '0', '1', '#', '1', '1');
+INSERT INTO `tree` VALUES ('2', 'nodeManager', 'fa fa-fw fa-tree', '节点管理', '1', '1', 'treeList', '1', '1');
+INSERT INTO `tree` VALUES ('7', 'groupManager', 'fa fa-fw fa-group', '组织架构', '1', '2', 'groupList', '1', '1');
+INSERT INTO `tree` VALUES ('8', 'userRoleManager', 'fa fa-fw fa-user-secret', '角色管理', '1', '3', 'userRoleList', '1', '1');
+INSERT INTO `tree` VALUES ('9', 'userManager', 'fa fa-fw fa-user', '用户维护', '1', '4', 'userList', '1', '1');
+INSERT INTO `tree` VALUES ('10', 'dictManager', 'fa fa-fw fa-book', '字典维护', '1', '5', 'dictList', '0', '1');
+INSERT INTO `tree` VALUES ('17', 'sysManager', 'fa fa-fw fa-desktop', '菜单维护', '0', '2', '#', '1', '1');
+INSERT INTO `tree` VALUES ('23', 'foodTypeManager', 'fa fa-fw fa-tree', '菜品维护', '17', '1', 'foodTypeList', '1', '1');
+INSERT INTO `tree` VALUES ('24', 'dinerListManager', 'fa fa-fw fa-book', '菜单管理', '17', '2', 'dinerList', '1', '1');
+INSERT INTO `tree` VALUES ('25', 'orderManager', 'fa fa-fw fa-book', '订单管理', '17', '3', 'orderList', '1', '1');
+INSERT INTO `tree` VALUES ('26', 'diningTableManager', 'fa fa-fw fa-tree', '餐桌维护', '17', '4', 'diningTableList', '1', '1');
+INSERT INTO `tree` VALUES ('27', 'userManagerTop', 'fa fa-user', '用户维护', '0', '3', '#', '1', '1');
+INSERT INTO `tree` VALUES ('28', 'mobileUserManager', 'fa fa-user-circle', '移动用户', '27', '1', 'mobileUser', '1', '1');
+INSERT INTO `tree` VALUES ('29', 'scoreDetailManager', 'fa fa-user-circle', '积分明细', '27', '2', 'scoreDetailList', '1', '1');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -162,7 +163,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'lyu', '4c3d63342a71d6feadabe4c42ffa5928', 'lyuds', 'xxxxxx超大大厦', '餐饮小兵', '10', null, '福州市', '晋安区', '福建省', 'xxxx超大大厦', '1', '1', '2017-12-07 11:17:19');
+INSERT INTO `user` VALUES ('1', 'lyu', '4c3d63342a71d6feadabe4c42ffa5928', 'lyuds', 'xxxxxx超大大厦', '餐饮小兵', '10', null, '福州市', '晋安区', '福建省', 'xxxx超大大厦', '1', '1', '2018-04-11 16:46:52');
 INSERT INTO `user` VALUES ('2', 'lyu144', '4c3d63342a71d6feadabe4c42ffa5928', '福建xxxxx', '北京市北京市市辖区东城区阿道夫的辐射大', '餐饮小兵', '10', null, '北京市市辖区', '东城区', '北京市', '阿道夫的辐射大', '1', '1', '2017-12-01 17:00:56');
 INSERT INTO `user` VALUES ('9', 'lyu23', '4c3d63342a71d6feadabe4c42ffa5928', 'xxxx', 'xxxxx188号', '餐饮主管', '10', null, '福州市', '晋安区', '福建省', 'xxxxxx', '0', '1', null);
 INSERT INTO `user` VALUES ('20', 'lyu1', '4c3d63342a71d6feadabe4c42ffa5928', 'lyu2', 'xxxxxlinzf12', 'linzf2', '9', null, '福州市', '晋安区', '福建省', 'linzf12', '1', null, null);
@@ -198,7 +199,7 @@ CREATE TABLE `user_role` (
   `name` varchar(255) DEFAULT NULL,
   `role_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user_role

@@ -15,6 +15,7 @@ public class Tree implements Comparable<Tree> {
     private long treeOrder;
     private String url;
     private String state;
+    private String display;
     // 菜单节点是否选中的状态
     private boolean checked;
     // 父菜单信息
@@ -84,6 +85,14 @@ public class Tree implements Comparable<Tree> {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(String display) {
+        this.display = display;
     }
 
     public long getpId() {

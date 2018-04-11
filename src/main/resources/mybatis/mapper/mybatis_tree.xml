@@ -10,6 +10,7 @@
         <result property="treeOrder" column="tree_order"/>
         <result property="url" column="url"/>
         <result property="state" column="state"/>
+        <result property="display" column="display"/>
     </resultMap>
 
     <!-- 加载用户的菜单树的数据 -->
@@ -23,7 +24,7 @@
 
     <!--根据主键获取对象-->
     <select id="get" parameterType="com.lyu.csdndemo.sys.entity.Tree" resultMap="TreeMap">
-		SELECT id,code,icon,name,p_id,tree_order,url,state FROM tree 
+		SELECT id,code,icon,name,p_id,tree_order,url,state,display FROM tree
 		WHERE id=#{id}
 	</select>
 
@@ -46,7 +47,7 @@
 
     <!--分页查询-->
     <select id="findByPage" parameterType="com.lyu.csdndemo.sys.entity.QueryTree" resultMap="TreeMap">
-        SELECT id,code,icon,name,p_id,tree_order,url,state FROM tree
+        SELECT id,code,icon,name,p_id,tree_order,url,state,display FROM tree
         WHERE 1=1
         <if test="code!=null and code!='' ">
             AND code=#{code}
@@ -104,7 +105,7 @@
 
     <!--查询-->
     <select id="query" parameterType="com.lyu.csdndemo.sys.entity.QueryTree" resultMap="TreeMap">
-        SELECT id,code,icon,name,p_id,tree_order,url,state FROM tree
+        SELECT id,code,icon,name,p_id,tree_order,url,state,display FROM tree
         WHERE 1=1
         <if test="code!=null and code!='' ">
             AND code=#{code}
