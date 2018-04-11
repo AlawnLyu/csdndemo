@@ -7,23 +7,24 @@
         <result property="text" column="text"/>
         <result property="type" column="type"/>
         <result property="value" column="value"/>
+        <result property="isLoad" column="is_load"/>
     </resultMap>
 
     <!--根据主键获取对象-->
     <select id="get" parameterType="com.lyu.csdndemo.sys.entity.Dict" resultMap="DictMap">
-		SELECT id,code,text,type,value FROM dict 
+		SELECT id,code,text,type,value,is_load FROM dict
 		WHERE id=#{id}
 	</select>
 
     <!--保存-->
     <insert id="save" parameterType="com.lyu.csdndemo.sys.entity.Dict" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO dict(code,text,type,value)
-		VALUES(#{code},#{text},#{type},#{value})
+		INSERT INTO dict(code,text,type,value,is_load)
+		VALUES(#{code},#{text},#{type},#{value},#{isLoad})
 	</insert>
 
     <!--修改-->
     <update id="update" parameterType="com.lyu.csdndemo.sys.entity.Dict">
-		UPDATE dict SET code=#{code},text=#{text},type=#{type},value=#{value}
+		UPDATE dict SET code=#{code},text=#{text},type=#{type},value=#{value},is_load=#{isLoad}
 		WHERE id=#{id}
 	</update>
 
@@ -34,7 +35,7 @@
 
     <!--分页查询-->
     <select id="findByPage" parameterType="com.lyu.csdndemo.sys.entity.QueryDict" resultMap="DictMap">
-        SELECT id,code,text,type,value FROM dict
+        SELECT id,code,text,type,value,is_load FROM dict
         WHERE 1=1
         <if test="code!=null and code!='' ">
             AND code=#{code}
@@ -47,6 +48,9 @@
         </if>
         <if test="value!=null and value!='' ">
             AND value=#{value}
+        </if>
+        <if test="isLoad!=null and isLoad!='' ">
+            AND is_load=#{isLoad}
         </if>
         <if test="sort!= null">
             order by ${sort} ${order}
@@ -70,11 +74,14 @@
         <if test="value!=null and value!='' ">
             AND value=#{value}
         </if>
+        <if test="isLoad!=null and isLoad!='' ">
+            AND is_load=#{isLoad}
+        </if>
     </select>
 
     <!--查询-->
     <select id="query" parameterType="com.lyu.csdndemo.sys.entity.QueryDict" resultMap="DictMap">
-        SELECT id,code,text,type,value FROM dict
+        SELECT id,code,text,type,value,is_load FROM dict
         WHERE 1=1
         <if test="code!=null and code!='' ">
             AND code=#{code}
@@ -87,6 +94,9 @@
         </if>
         <if test="value!=null and value!='' ">
             AND value=#{value}
+        </if>
+        <if test="isLoad!=null and isLoad!='' ">
+            AND is_load=#{isLoad}
         </if>
         <if test="sort!= null">
             order by ${sort} ${order}
