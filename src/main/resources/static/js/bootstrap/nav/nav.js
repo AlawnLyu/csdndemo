@@ -9,7 +9,7 @@ $(function () {
         navbar_header_content += "<span class='icon-bar'></span>";
         navbar_header_content += "</button>";
         navbar_header_content += "<a class='navbar-brand' href='"+opts.index+"'>"+opts.navTitle+"</a>";
-        $("#navbar_header").html(navbar_header_content);
+        $("#navbar-header").html(navbar_header_content);
     }
 
     /*

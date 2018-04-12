@@ -100,7 +100,7 @@
 </div>
 <script th:inline="javascript">
     /*<![CDATA[*/
-    var homePage = /*[[@{/home}]]*/ '/home';
+    var homePage = /*[[@{home}]]*/ 'home';
     /*]]>*/
     $(function () {
         //页面加载完成以后开启websocket的连接
@@ -108,14 +108,14 @@
         options.sockurl = '/ricky-websocket';
         options.stompClienturl = '/ricky/topic/greetings';
         options.login = [[${#authentication.name}]];
-        options.success = function(greeting){
-            var r = eval("("+JSON.parse(greeting.body).content+")")
+        options.success = function (greeting) {
+            var r = eval("(" + JSON.parse(greeting.body).content + ")")
             alert(r);
             // $("#greetings").append("<tr><td>" + JSON.parse(greeting.body).content + "</td></tr>");
         }
         $.fn.socketConnect(options);
         // 初始化nav
-        $.fn.bootstrapNav({index: 'main', navTitle: 'XXXX管理系统'});
+        $.fn.bootstrapNav({index: 'main', navTitle: '后台管理系统'});
         // 初始化标签页
         $("#tabContainer").tabs({
             data: [{
