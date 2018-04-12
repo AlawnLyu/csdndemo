@@ -131,7 +131,7 @@ public class UserController extends GenericController<User, QueryUser> {
    * @return
    * @throws Exception
    */
-  @RequestMapping(value = "/group")
+  @RequestMapping(value = "/pickGroup")
   public String pickGroup() throws Exception {
     return getPageBaseRoot() + "/group";
   }

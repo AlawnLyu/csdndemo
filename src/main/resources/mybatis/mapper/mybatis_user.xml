@@ -72,7 +72,7 @@
 
     <!--根据主键获取对象-->
     <select id="get" parameterType="com.lyu.csdndemo.sys.entity.User" resultMap="UserMap">
-        SELECT u.* FROM user u
+        SELECT u.*,og.existing_num,og.group_code,og.name,og.node,og.num,og.parent_node FROM user u inner join org_group og on u.group_id = og.group_id
         WHERE id=#{id}
     </select>
 
@@ -95,10 +95,18 @@
 
     <!--分页查询组织架构底下的用户-->
     <select id="findGroupUserByPage" parameterType="com.lyu.csdndemo.sys.entity.QueryUser" resultMap="UserMap">
-        SELECT u.* FROM user u
+        SELECT u.*,og.existing_num,og.group_code,og.name,og.node,og.num,og.parent_node FROM user u inner JOIN org_group og ON u.group_id = og.group_id
         WHERE 1=1
         <if test="userName!=null and userName!='' ">
             AND u.user_name LIKE concat(#{userName},'%')
+        </if>
+        <if test="orgGroup!=null">
+            <if test="orgGroup.parentNode!=null and orgGroup.parentNode!='' ">
+                AND og.parent_node like concat(#{orgGroup.parentNode},'%')
+            </if>
+            <if test="orgGroup.node!=null and orgGroup.node!='' ">
+                AND og.node like concat(#{orgGroup.node},'%')
+            </if>
         </if>
         <if test="sort!= null and sort!='' ">
             ORDER BY ${sort} ${order}
@@ -108,16 +116,24 @@
 
     <!--统计组织架构底下的用户-->
     <select id="countGroupUser" parameterType="com.lyu.csdndemo.sys.entity.QueryUser" resultType="int">
-        SELECT count(1) FROM user u
+        SELECT count(1) FROM user u inner join org_group og on u.group_id = og.group_id
         WHERE 1=1
         <if test="userName!=null and userName!='' ">
             AND u.user_name LIKE concat(#{userName},'%')
+        </if>
+        <if test="orgGroup!=null">
+            <if test="orgGroup.parentNode!=null and orgGroup.parentNode!='' ">
+                AND og.parent_node like concat(#{orgGroup.parentNode},'%')
+            </if>
+            <if test="orgGroup.node!=null and orgGroup.node!='' ">
+                AND og.node like concat(#{orgGroup.node},'%')
+            </if>
         </if>
     </select>
 
     <!--分页查询-->
     <select id="findByPage" parameterType="com.lyu.csdndemo.sys.entity.QueryUser" resultMap="UserMap">
-        SELECT u.* FROM user u
+        SELECT u.*,og.existing_num,og.group_code,og.name,og.node,og.num,og.parent_node FROM user u inner join org_group og on u.group_id = og.group_id
         WHERE 1=1
         <if test="login!=null and login!='' ">
             AND u.login=#{login}

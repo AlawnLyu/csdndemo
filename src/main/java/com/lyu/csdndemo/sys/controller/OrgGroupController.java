@@ -68,7 +68,7 @@ public class OrgGroupController extends GenericController<OrgGroup, QueryOrgGrou
    */
   @RequestMapping(value = "/addUserPage")
   public String addUserPage() throws Exception {
-    return getPageBaseRoot() + "/addUserPage";
+    return getPageBaseRoot() + "/addUser";
   }
 
   @Override
