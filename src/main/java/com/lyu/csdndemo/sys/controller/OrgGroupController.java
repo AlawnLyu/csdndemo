@@ -28,7 +28,7 @@ import java.util.Optional;
 
 /** @author lyu */
 @Controller
-@RequestMapping("/orgGroup")
+@RequestMapping("/group")
 public class OrgGroupController extends GenericController<OrgGroup, QueryOrgGroup> {
   @Inject private OrgGroupService orgGroupService;
 

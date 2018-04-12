@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:include="include/includebase"></head>
+<body>
+<div id="content" class="row-fluid">
+    <div class="col-md-3">
+        <ul id="tree" class="ztree">
+        </ul>
+    </div>
+    <div class="col-md-9">
+        <div class="panel-body">
+            <div class="panel-default">
+                <div class="panel-heading" id="groupQueryTitle">查询条件</div>
+                <div class="panel-body">
+                    <form class="form-inline" role="form" style="float: left;width: 100%;padding-left: 20px;"
+                          method="post"
+                          id="queryGroupUser">
+                        <input type="hidden" id="groupNode" name="orgGroup.node" value=""/>
+                        <input type="hidden" id="groupParentNode" name="orgGroup.parentNode" value=""/>
+                        <div class="form-group">
+                            <label for="userName">名字：</label>
+                            <input type="text" class="form-control" name="userName" id="userName" placeholder="请输入名字"/>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" id="queryBtn" class="btn btn-primary" onclick="doQuery()">查询</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <table id="group-user-table" style="margin-top: -50px;">
+            </table>
+        </div>
+    </div>
+</div>
+<script th:inline="javascript">
+    var zTree;
+    var selectedNode;
+
+    function addHoverDom(treeId, treeNode) {
+
+    }
+
+    function removeHoverDom(treeId, treeNode) {
+
+    }
+
+    var setting = {
+        check: {
+            enable: true
+        },
+        view: {
+            addHoverDom: addHoverDom,
+            removeHoverDom: removeHoverDom,
+            dblClickExpand: true,
+            showLine: true,
+            selectedMulti: false
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                idKey: "node",
+                pIdKey: "parentNode",
+                rootPId: "0"
+            }
+        },
+        callback: {
+            beforeClick: function (treeId, treeNode) {
+                var zTree = $.fn.zTree.getZTreeObj("tree");
+                $("#groupParentNode").attr("value", treeNode.parentNode);
+                $("#groupNode").attr("value", treeNode.node);
+                $("#groupQueryTitle").html("查询条件(" + treeNode.name + ")");
+                doQuery();
+                if (treeNode.isParent) {
+                    zTree.expandNode(treeNode);
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
+    };
+
+    $(function () {
+        $.post("/group/loadGroupTree", function (info) {
+            if (!info.result) {
+                window.Ewin.alert({message: "加载数据失败！"});
+                return;
+            }
+            var t = $("#tree");
+            t = $.fn.zTree.init(t, setting, info.data);
+            $("#groupParentNode").attr("value", $.fn.zTree.getZTreeObj("tree").getNodes()[0].parentNode);
+            $("#groupNode").attr("value", $.fn.zTree.getZTreeObj("tree").getNodes()[0].node);
+            $("#groupQueryTitle").html("查询条件(" + $.fn.zTree.getZTreeObj("tree").getNodes()[0].name + ")");
+            initTable();
+            $('#group-user-table').bootstrapTable('hideColumn', "id");
+        });
+    });
+
+    function doQuery() {
+        $('#group-user-table').bootstrapTable('refresh');    //刷新表格
+    }
+
+    function initTable() {
+
+    }
+</script>
+</body>
+</html>
