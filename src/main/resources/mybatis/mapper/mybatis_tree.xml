@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lyu.csdndemo.sys.dao.TreeDao">
-    <resultMap type="com.lyu.csdndemo.sys.entity.Tree" id="TreeMap">
+<mapper namespace="com.lyu.tech.sys.dao.TreeDao">
+    <resultMap type="com.lyu.tech.sys.entity.Tree" id="TreeMap">
         <id property="id" column="id"/>
         <result property="code" column="code"/>
         <result property="icon" column="icon"/>
@@ -14,7 +14,7 @@
     </resultMap>
 
     <!-- 加载用户的菜单树的数据 -->
-    <select id="loadUserTree" resultMap="TreeMap" parameterType="com.lyu.csdndemo.sys.entity.User">
+    <select id="loadUserTree" resultMap="TreeMap" parameterType="com.lyu.tech.sys.entity.User">
         SELECT DISTINCT t.* FROM tree t INNER JOIN role_associate_tree rat ON t.id = rat.tree_id INNER JOIN user_role ur
         ON rat.role_id = ur.id WHERE ur.id IN
         <foreach collection="roles" index="index" item="role" open="(" separator="," close=")">
@@ -23,30 +23,30 @@
     </select>
 
     <!--根据主键获取对象-->
-    <select id="get" parameterType="com.lyu.csdndemo.sys.entity.Tree" resultMap="TreeMap">
+    <select id="get" parameterType="com.lyu.tech.sys.entity.Tree" resultMap="TreeMap">
 		SELECT id,code,icon,name,p_id,tree_order,url,state,display FROM tree
 		WHERE id=#{id}
 	</select>
 
     <!--保存-->
-    <insert id="save" parameterType="com.lyu.csdndemo.sys.entity.Tree" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.lyu.tech.sys.entity.Tree" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO tree(code,icon,name,p_id,tree_order,url,state,display)
 		VALUES(#{code},#{icon},#{name},#{pId},#{treeOrder},#{url},#{state},#{display})
 	</insert>
 
     <!--修改-->
-    <update id="update" parameterType="com.lyu.csdndemo.sys.entity.Tree">
+    <update id="update" parameterType="com.lyu.tech.sys.entity.Tree">
 		UPDATE tree SET code=#{code},icon=#{icon},name=#{name},p_id=#{pId},tree_order=#{treeOrder},url=#{url},state=#{state},display=#{display}
 		WHERE id=#{id}
 	</update>
 
     <!--删除-->
-    <delete id="delete" parameterType="com.lyu.csdndemo.sys.entity.Tree">
+    <delete id="delete" parameterType="com.lyu.tech.sys.entity.Tree">
 		 DELETE FROM tree WHERE id=#{id}
 	</delete>
 
     <!--分页查询-->
-    <select id="findByPage" parameterType="com.lyu.csdndemo.sys.entity.QueryTree" resultMap="TreeMap">
+    <select id="findByPage" parameterType="com.lyu.tech.sys.entity.QueryTree" resultMap="TreeMap">
         SELECT id,code,icon,name,p_id,tree_order,url,state,display FROM tree
         WHERE 1=1
         <if test="code!=null and code!='' ">
@@ -80,7 +80,7 @@
     </select>
 
     <!--统计-->
-    <select id="count" parameterType="com.lyu.csdndemo.sys.entity.QueryTree" resultType="int">
+    <select id="count" parameterType="com.lyu.tech.sys.entity.QueryTree" resultType="int">
         SELECT count(*) FROM tree
         WHERE 1=1
         <if test="code!=null and code!='' ">
@@ -110,7 +110,7 @@
     </select>
 
     <!--查询-->
-    <select id="query" parameterType="com.lyu.csdndemo.sys.entity.QueryTree" resultMap="TreeMap">
+    <select id="query" parameterType="com.lyu.tech.sys.entity.QueryTree" resultMap="TreeMap">
         SELECT id,code,icon,name,p_id,tree_order,url,state,display FROM tree
         WHERE 1=1
         <if test="code!=null and code!='' ">

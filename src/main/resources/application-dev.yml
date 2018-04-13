@@ -10,7 +10,7 @@ spring:
       max-idle: 20
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/csdndemo?characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8&nullNamePatternMatchesAll=true
+    url: jdbc:mysql://localhost:3306/tech?characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8&nullNamePatternMatchesAll=true
     username: root
     password: gbsz123
     druid:

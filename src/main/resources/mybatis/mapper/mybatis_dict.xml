@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lyu.csdndemo.sys.dao.DictDao">
-    <resultMap type="com.lyu.csdndemo.sys.entity.Dict" id="DictMap">
+<mapper namespace="com.lyu.tech.sys.dao.DictDao">
+    <resultMap type="com.lyu.tech.sys.entity.Dict" id="DictMap">
         <id property="id" column="id"/>
         <result property="code" column="code"/>
         <result property="text" column="text"/>
@@ -11,30 +11,30 @@
     </resultMap>
 
     <!--根据主键获取对象-->
-    <select id="get" parameterType="com.lyu.csdndemo.sys.entity.Dict" resultMap="DictMap">
+    <select id="get" parameterType="com.lyu.tech.sys.entity.Dict" resultMap="DictMap">
 		SELECT id,code,text,type,value,is_load FROM dict
 		WHERE id=#{id}
 	</select>
 
     <!--保存-->
-    <insert id="save" parameterType="com.lyu.csdndemo.sys.entity.Dict" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.lyu.tech.sys.entity.Dict" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO dict(code,text,type,value,is_load)
 		VALUES(#{code},#{text},#{type},#{value},#{isLoad})
 	</insert>
 
     <!--修改-->
-    <update id="update" parameterType="com.lyu.csdndemo.sys.entity.Dict">
+    <update id="update" parameterType="com.lyu.tech.sys.entity.Dict">
 		UPDATE dict SET code=#{code},text=#{text},type=#{type},value=#{value},is_load=#{isLoad}
 		WHERE id=#{id}
 	</update>
 
     <!--删除-->
-    <delete id="delete" parameterType="com.lyu.csdndemo.sys.entity.Dict">
+    <delete id="delete" parameterType="com.lyu.tech.sys.entity.Dict">
 		 DELETE FROM dict WHERE id=#{id}
 	</delete>
 
     <!--分页查询-->
-    <select id="findByPage" parameterType="com.lyu.csdndemo.sys.entity.QueryDict" resultMap="DictMap">
+    <select id="findByPage" parameterType="com.lyu.tech.sys.entity.QueryDict" resultMap="DictMap">
         SELECT id,code,text,type,value,is_load FROM dict
         WHERE 1=1
         <if test="code!=null and code!='' ">
@@ -59,7 +59,7 @@
     </select>
 
     <!--统计-->
-    <select id="count" parameterType="com.lyu.csdndemo.sys.entity.QueryDict" resultType="int">
+    <select id="count" parameterType="com.lyu.tech.sys.entity.QueryDict" resultType="int">
         SELECT count(*) FROM dict
         WHERE 1=1
         <if test="code!=null and code!='' ">
@@ -80,7 +80,7 @@
     </select>
 
     <!--查询-->
-    <select id="query" parameterType="com.lyu.csdndemo.sys.entity.QueryDict" resultMap="DictMap">
+    <select id="query" parameterType="com.lyu.tech.sys.entity.QueryDict" resultMap="DictMap">
         SELECT id,code,text,type,value,is_load FROM dict
         WHERE 1=1
         <if test="code!=null and code!='' ">
@@ -104,7 +104,7 @@
     </select>
 
     <!-- 加载所有的数据 -->
-    <select id="loadAll" parameterType="com.lyu.csdndemo.sys.entity.QueryDict" resultMap="DictMap">
+    <select id="loadAll" parameterType="com.lyu.tech.sys.entity.QueryDict" resultMap="DictMap">
 		SELECT id,code,text,type,value,is_load FROM dict
 	</select>
 </mapper>

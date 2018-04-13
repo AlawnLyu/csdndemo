@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lyu.csdndemo.sys.dao.OrgGroupDao">
-	<resultMap type="com.lyu.csdndemo.sys.entity.OrgGroup" id="OrgGroupMap">
+<mapper namespace="com.lyu.tech.sys.dao.OrgGroupDao">
+	<resultMap type="com.lyu.tech.sys.entity.OrgGroup" id="OrgGroupMap">
 		<id property="groupId" column="group_id"/>
 		<result property="existingNum" column="existing_num"/>
 		<result property="groupCode" column="group_code"/>
@@ -22,30 +22,30 @@
 	</select>
 
 	<!--根据主键获取对象-->
-	<select id="get" parameterType="com.lyu.csdndemo.sys.entity.OrgGroup" resultMap="OrgGroupMap">
+	<select id="get" parameterType="com.lyu.tech.sys.entity.OrgGroup" resultMap="OrgGroupMap">
 		SELECT group_id,existing_num,group_code,name,node,num,parent_node FROM org_group 
 		WHERE group_id=#{groupId}
 	</select>
 
 	<!--保存-->
-	<insert id="save" parameterType="com.lyu.csdndemo.sys.entity.OrgGroup" useGeneratedKeys="true" keyProperty="groupId">
+	<insert id="save" parameterType="com.lyu.tech.sys.entity.OrgGroup" useGeneratedKeys="true" keyProperty="groupId">
 		INSERT INTO org_group(existing_num,group_code,name,node,num,parent_node)
 		VALUES(#{existingNum},#{groupCode},#{name},#{node},#{num},#{parentNode})
 	</insert>
 
 	<!--修改-->
-	<update id="update" parameterType="com.lyu.csdndemo.sys.entity.OrgGroup">
+	<update id="update" parameterType="com.lyu.tech.sys.entity.OrgGroup">
 		UPDATE org_group SET existing_num=#{existingNum},group_code=#{groupCode},name=#{name},node=#{node},num=#{num},parent_node=#{parentNode}
 		WHERE group_id=#{groupId}
 	</update>
 
 	<!--删除-->
-	<delete id="delete" parameterType="com.lyu.csdndemo.sys.entity.OrgGroup">
+	<delete id="delete" parameterType="com.lyu.tech.sys.entity.OrgGroup">
 		 DELETE FROM org_group WHERE group_id=#{groupId}
 	</delete>
 
 	<!--分页查询-->
-	<select id="findByPage" parameterType="com.lyu.csdndemo.sys.entity.QueryOrgGroup" resultMap="OrgGroupMap">
+	<select id="findByPage" parameterType="com.lyu.tech.sys.entity.QueryOrgGroup" resultMap="OrgGroupMap">
 		SELECT group_id,existing_num,group_code,name,node,num,parent_node FROM org_group
 		WHERE 1=1
 		<if test="existingNum!=null and existingNum!='' "  >
@@ -73,7 +73,7 @@
 	</select>
 
 	<!--统计-->
-	<select id="count" parameterType="com.lyu.csdndemo.sys.entity.QueryOrgGroup" resultType="int">
+	<select id="count" parameterType="com.lyu.tech.sys.entity.QueryOrgGroup" resultType="int">
 		SELECT count(*) FROM org_group
 		WHERE 1=1
 		<if test="existingNum!=null and existingNum!='' ">
@@ -97,7 +97,7 @@
 	</select>
 
 	<!--查询-->
-	<select id="query" parameterType="com.lyu.csdndemo.sys.entity.QueryOrgGroup" resultMap="OrgGroupMap">
+	<select id="query" parameterType="com.lyu.tech.sys.entity.QueryOrgGroup" resultMap="OrgGroupMap">
 		SELECT group_id,existing_num,group_code,name,node,num,parent_node FROM org_group
 		WHERE 1=1
 		<if test="existingNum!=null and existingNum!='' ">

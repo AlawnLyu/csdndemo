@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lyu</groupId>
-    <artifactId>csdndemo</artifactId>
+    <artifactId>lyu-tech</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>csdndemo</name>
+    <name>lyu-tech</name>
     <description>Demo project for Spring Boot</description>
 
     <parent>
@@ -215,7 +215,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>com.lyu.csdndemo.CsdndemoApplication</mainClass>
+                    <mainClass>com.lyu.tech.Application</mainClass>
                 </configuration>
                 <executions>
                     <execution>

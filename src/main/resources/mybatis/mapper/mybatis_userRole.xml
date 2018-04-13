@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lyu.csdndemo.sys.dao.UserRoleDao">
+<mapper namespace="com.lyu.tech.sys.dao.UserRoleDao">
 
-    <resultMap type="com.lyu.csdndemo.sys.entity.UserRole" id="UserRoleMap">
+    <resultMap type="com.lyu.tech.sys.entity.UserRole" id="UserRoleMap">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="roleName" column="role_name"/>
     </resultMap>
 
-    <resultMap type="com.lyu.csdndemo.sys.entity.UserRole" id="UserRoleTreeMap">
+    <resultMap type="com.lyu.tech.sys.entity.UserRole" id="UserRoleTreeMap">
         <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="roleName" column="role_name"/>
-        <collection property="treeList" ofType="com.lyu.csdndemo.sys.entity.Tree" javaType="java.util.ArrayList">
+        <collection property="treeList" ofType="com.lyu.tech.sys.entity.Tree" javaType="java.util.ArrayList">
             <id property="id" column="tree_id"/>
             <result property="code" column="code"/>
             <result property="icon" column="icon"/>
@@ -26,36 +26,36 @@
 
 
     <!--根据角色id获取权限菜单-->
-    <select id="getUserRoleAssociate" parameterType="com.lyu.csdndemo.sys.entity.UserRole" resultMap="UserRoleTreeMap">
+    <select id="getUserRoleAssociate" parameterType="com.lyu.tech.sys.entity.UserRole" resultMap="UserRoleTreeMap">
 		SELECT ur.*,t.id as tree_id,t.code,t.icon,t.name as tree_name,t.p_id,t.tree_order,t.url,t.state FROM user_role ur inner join role_associate_tree rat on ur.id = rat.role_id inner join tree t on rat.tree_id = t.id
 		WHERE ur.id=#{id}
 	</select>
 
     <!--根据主键获取对象-->
-    <select id="get" parameterType="com.lyu.csdndemo.sys.entity.UserRole" resultMap="UserRoleTreeMap">
+    <select id="get" parameterType="com.lyu.tech.sys.entity.UserRole" resultMap="UserRoleTreeMap">
 		SELECT id,name,role_name FROM user_role 
 		WHERE id=#{id}
 	</select>
 
     <!--保存-->
-    <insert id="save" parameterType="com.lyu.csdndemo.sys.entity.UserRole" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.lyu.tech.sys.entity.UserRole" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO user_role(name,role_name)
 		VALUES(#{name},#{roleName})
 	</insert>
 
     <!--修改-->
-    <update id="update" parameterType="com.lyu.csdndemo.sys.entity.UserRole">
+    <update id="update" parameterType="com.lyu.tech.sys.entity.UserRole">
 		UPDATE user_role SET name=#{name},role_name=#{roleName}
 		WHERE id=#{id}
 	</update>
 
     <!--删除-->
-    <delete id="delete" parameterType="com.lyu.csdndemo.sys.entity.UserRole">
+    <delete id="delete" parameterType="com.lyu.tech.sys.entity.UserRole">
 		 DELETE FROM user_role WHERE id=#{id}
 	</delete>
 
     <!--分页查询-->
-    <select id="findByPage" parameterType="com.lyu.csdndemo.sys.entity.QueryUserRole" resultMap="UserRoleMap">
+    <select id="findByPage" parameterType="com.lyu.tech.sys.entity.QueryUserRole" resultMap="UserRoleMap">
         SELECT id,name,role_name FROM user_role
         WHERE 1=1
         <if test="name!=null and name!='' ">
@@ -71,7 +71,7 @@
     </select>
 
     <!--统计-->
-    <select id="count" parameterType="com.lyu.csdndemo.sys.entity.QueryUserRole" resultType="int">
+    <select id="count" parameterType="com.lyu.tech.sys.entity.QueryUserRole" resultType="int">
         SELECT count(*) FROM user_role
         WHERE 1=1
         <if test="name!=null and name!='' ">
@@ -83,7 +83,7 @@
     </select>
 
     <!--查询-->
-    <select id="query" parameterType="com.lyu.csdndemo.sys.entity.QueryUserRole" resultMap="UserRoleMap">
+    <select id="query" parameterType="com.lyu.tech.sys.entity.QueryUserRole" resultMap="UserRoleMap">
         SELECT id,name,role_name FROM user_role
         WHERE 1=1
         <if test="name!=null and name!='' ">

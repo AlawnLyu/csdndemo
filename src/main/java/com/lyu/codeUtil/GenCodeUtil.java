@@ -416,7 +416,7 @@ public class GenCodeUtil {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        genFiles("lyu", "csdndemo", "role_associate_tree", "com.lyu.csdndemo.common.base", "com.lyu.csdndemo.sys",
+        genFiles("lyu", "tech", "role_associate_tree", "com.lyu.tech.common.base", "com.lyu.tech.sys",
                 "/resources/mybatis/mapper", "RoleAssociateTree", "QueryRoleAssociateTree", "application-generic.properties");
     }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lyu.csdndemo.sys.dao.UserDao">
+<mapper namespace="com.lyu.tech.sys.dao.UserDao">
 
-    <resultMap type="com.lyu.csdndemo.sys.entity.User" id="UserMap">
+    <resultMap type="com.lyu.tech.sys.entity.User" id="UserMap">
         <id property="id" column="id"/>
         <result property="login" column="login"/>
         <result property="password" column="password"/>
@@ -18,7 +18,7 @@
         <result property="state" column="state"/>
         <result property="type" column="type"/>
         <result property="lastLoginDate" column="last_login_date"/>
-        <association property="orgGroup" javaType="com.lyu.csdndemo.sys.entity.OrgGroup" column="group_id">
+        <association property="orgGroup" javaType="com.lyu.tech.sys.entity.OrgGroup" column="group_id">
             <id property="groupId" column="group_id"/>
             <result property="existingNum" column="existing_num"/>
             <result property="groupCode" column="group_code"/>
@@ -29,7 +29,7 @@
         </association>
     </resultMap>
     <!-- 包含角色信息的map -->
-    <resultMap id="UserLoginMap" type="com.lyu.csdndemo.sys.entity.User">
+    <resultMap id="UserLoginMap" type="com.lyu.tech.sys.entity.User">
         <id property="id" column="id"/>
         <result property="login" column="login"/>
         <result property="password" column="password"/>
@@ -45,7 +45,7 @@
         <result property="state" column="state"/>
         <result property="type" column="type"/>
         <result property="lastLoginDate" column="last_login_date"/>
-        <collection property="roles" ofType="com.lyu.csdndemo.sys.entity.UserRole" javaType="java.util.ArrayList">
+        <collection property="roles" ofType="com.lyu.tech.sys.entity.UserRole" javaType="java.util.ArrayList">
             <result property="id" column="user_role_id" jdbcType="VARCHAR"/>
             <result property="name" column="name" jdbcType="VARCHAR"/>
             <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
@@ -53,7 +53,7 @@
     </resultMap>
 
     <!-- 更新用户状态为可用或者不可用 -->
-    <update id="userControl" parameterType="com.lyu.csdndemo.sys.entity.User">
+    <update id="userControl" parameterType="com.lyu.tech.sys.entity.User">
         update user set state = #{state} where id=#{id}
     </update>
 
@@ -66,35 +66,35 @@
     </select>
 
     <!-- 更新用户的最迟登陆时间 -->
-    <update id="updateLogin" parameterType="com.lyu.csdndemo.sys.entity.User">
+    <update id="updateLogin" parameterType="com.lyu.tech.sys.entity.User">
         update user set last_login_date = #{lastLoginDate} where id=#{id}
     </update>
 
     <!--根据主键获取对象-->
-    <select id="get" parameterType="com.lyu.csdndemo.sys.entity.User" resultMap="UserMap">
+    <select id="get" parameterType="com.lyu.tech.sys.entity.User" resultMap="UserMap">
         SELECT u.*,og.existing_num,og.group_code,og.name,og.node,og.num,og.parent_node FROM user u inner join org_group og on u.group_id = og.group_id
         WHERE id=#{id}
     </select>
 
     <!--保存-->
-    <insert id="save" parameterType="com.lyu.csdndemo.sys.entity.User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.lyu.tech.sys.entity.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO user(login,password,user_name,address,job,group_id,birth_date,city,district,province,street_address,state,type,last_login_date)
         VALUES(#{login},#{password},#{userName},#{address},#{job},#{orgGroup.groupId},#{birthDate},#{city},#{district},#{province},#{streetAddress},#{state},#{type},#{lastLoginDate})
     </insert>
 
     <!--修改-->
-    <update id="update" parameterType="com.lyu.csdndemo.sys.entity.User">
+    <update id="update" parameterType="com.lyu.tech.sys.entity.User">
         UPDATE user SET user_name=#{userName},address=#{address},job=#{job},group_id=#{orgGroup.groupId},birth_date=#{birthDate},city=#{city},district=#{district},province=#{province},street_address=#{streetAddress}
         WHERE id=#{id}
     </update>
 
     <!--删除-->
-    <delete id="delete" parameterType="com.lyu.csdndemo.sys.entity.User">
+    <delete id="delete" parameterType="com.lyu.tech.sys.entity.User">
         DELETE FROM user WHERE id=#{id}
     </delete>
 
     <!--分页查询组织架构底下的用户-->
-    <select id="findGroupUserByPage" parameterType="com.lyu.csdndemo.sys.entity.QueryUser" resultMap="UserMap">
+    <select id="findGroupUserByPage" parameterType="com.lyu.tech.sys.entity.QueryUser" resultMap="UserMap">
         SELECT u.*,og.existing_num,og.group_code,og.name,og.node,og.num,og.parent_node FROM user u inner JOIN org_group og ON u.group_id = og.group_id
         WHERE 1=1
         <if test="userName!=null and userName!='' ">
@@ -115,7 +115,7 @@
     </select>
 
     <!--统计组织架构底下的用户-->
-    <select id="countGroupUser" parameterType="com.lyu.csdndemo.sys.entity.QueryUser" resultType="int">
+    <select id="countGroupUser" parameterType="com.lyu.tech.sys.entity.QueryUser" resultType="int">
         SELECT count(1) FROM user u inner join org_group og on u.group_id = og.group_id
         WHERE 1=1
         <if test="userName!=null and userName!='' ">
@@ -132,7 +132,7 @@
     </select>
 
     <!--分页查询-->
-    <select id="findByPage" parameterType="com.lyu.csdndemo.sys.entity.QueryUser" resultMap="UserMap">
+    <select id="findByPage" parameterType="com.lyu.tech.sys.entity.QueryUser" resultMap="UserMap">
         SELECT u.*,og.existing_num,og.group_code,og.name,og.node,og.num,og.parent_node FROM user u inner join org_group og on u.group_id = og.group_id
         WHERE 1=1
         <if test="login!=null and login!='' ">
@@ -184,7 +184,7 @@
     </select>
 
     <!--统计-->
-    <select id="count" parameterType="com.lyu.csdndemo.sys.entity.QueryUser" resultType="int">
+    <select id="count" parameterType="com.lyu.tech.sys.entity.QueryUser" resultType="int">
         SELECT count(*) FROM user
         WHERE 1=1
         <if test="login!=null and login!='' ">
@@ -235,7 +235,7 @@
     </select>
 
     <!--查询-->
-    <select id="query" parameterType="com.lyu.csdndemo.sys.entity.QueryUser" resultMap="UserMap">
+    <select id="query" parameterType="com.lyu.tech.sys.entity.QueryUser" resultMap="UserMap">
         SELECT
         id,login,password,user_name,address,job,group_id,birth_date,city,district,province,street_address,state,type,last_login_date
         FROM user
