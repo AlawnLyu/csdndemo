@@ -3,10 +3,10 @@ spring:
     ansi:
       enabled: always
   profiles:
-    active: dev
+    active: prod
   thymeleaf:
     mode: LEGACYHTML5
-    cache: false
+    cache: true
 
 security:
   #配置放行的目录和方法
@@ -19,4 +19,4 @@ mybatis:
 logging:
   file: logs/si.log
   level:
-    com.lyu.csdndemo.sys.dao: debug
+    com.lyu.csdndemo.sys.dao: info

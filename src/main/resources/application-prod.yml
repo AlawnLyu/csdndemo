@@ -1,0 +1,31 @@
+server:
+  port: 8080
+
+spring:
+  #redis配置文件
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    pool:
+      max-idle: 20
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lyu-tech?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&nullNamePatternMatchesAll=true
+    username: lyu
+    password: Lyu0126!
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat,wall,log4j
+      connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+    type: com.alibaba.druid.pool.DruidDataSource
