@@ -1,7 +1,9 @@
 server:
-  port: 8080
+  port: 9080
 
 spring:
+  thymeleaf:
+    cache: false
   #redis配置文件
   redis:
     host: 127.0.0.1

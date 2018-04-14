@@ -6,7 +6,8 @@ spring:
     active: prod
   thymeleaf:
     mode: LEGACYHTML5
-    cache: true
+    prefix: classpath:/templates/
+    suffix: .html
 
 security:
   #配置放行的目录和方法
@@ -16,7 +17,3 @@ mybatis:
   config-location: classpath:mybatis/mybatis-config.xml
   mapper-locations: classpath:mybatis/mapper/*.xml
 
-logging:
-  file: logs/si.log
-  level:
-    com.lyu.csdndemo.sys.dao: info
