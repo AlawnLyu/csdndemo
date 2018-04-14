@@ -16,5 +16,5 @@ $(function () {
     * param index:单击后台业务管理系统的时候响应的事件。
     * param navTitle:后台系统的nav的标题。
     */
-    $.fn.bootstrapNav.defaults = {index:'main',navTitle:'后台业务管理系统'};
+    $.fn.bootstrapNav.defaults = {index:'/',navTitle:'后台业务管理系统'};
 });
