@@ -126,4 +126,14 @@ public class RedisCache {
               return serializer.deserialize(res);
             });
   }
+
+  public boolean del(String key) {
+    return redisTemplate.execute(
+        (RedisCallback<Boolean>)
+            redisConnection -> {
+              RedisSerializer<String> serializer = redisTemplate.getStringSerializer();
+              long result = redisConnection.del(serializer.serialize(key));
+              return result > 0;
+            });
+  }
 }
